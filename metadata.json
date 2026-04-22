@@ -1,0 +1,8 @@
+{
+  "name": "Paperly (My first SaaS)",
+  "description": "AI-powered exam paper generator for Punjab Board (PCTB). Generate papers from books, handwritten notes, or clone styles from old papers.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}

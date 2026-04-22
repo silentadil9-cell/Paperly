@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-border: #1f2937;
+  --color-input: #1f2937;
+  --color-ring: #c5a059;
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --color-primary: #c5a059;
+  --color-primary-foreground: #000000;
+  --color-secondary: #171717;
+  --color-secondary-foreground: #ededed;
+  --color-muted: #171717;
+  --color-muted-foreground: #a3a3a3;
+  --color-accent: #171717;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-card: #0a0a0a;
+  --color-card-foreground: #ededed;
+  
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-paper: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.25rem;
+
+  --font-urdu: "Noto Nastaliq Urdu", serif;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .paper-urdu {
+    font-family: var(--font-urdu) !important;
+    line-height: 2.2 !important;
+  }
+  .paper-urdu .font-bold {
+    font-weight: 700 !important;
+  }
+  
+  .editable {
+    @apply outline-none rounded-sm transition-colors px-0.5 -mx-0.5 cursor-text;
+  }
+  .editable:hover { background-color: rgba(0, 0, 0, 0.05); }
+  .editable:focus { background-color: rgba(0, 0, 0, 0.1); }
+  .editable[data-empty="true"]::before {
+    content: attr(data-placeholder);
+    color: #999;
+    pointer-events: none;
+  }
+
+  .a4-page {
+    position: relative;
+    box-shadow: var(--shadow-paper);
+    transition: transform 0.2s ease;
+  }
+
+  .bg-workspace {
+    background-color: #f3f3f3;
+  }
+}
+
+@media print {
+  @page { 
+    size: A4; 
+    margin: 0; 
+  }
+  body { 
+    background: white !important; 
+    padding: 0 !important;
+  }
+  .no-print { 
+    display: none !important; 
+  }
+  .a4-page {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    border: none !important;
+  }
+  .bg-workspace {
+     background: white;
+  }
+}
